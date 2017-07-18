@@ -2,7 +2,7 @@
 
 if(count($_GET) == 1)
 {
-	echo $_GET;
+	var_dump($_GET);
 	exit;
 }
 
