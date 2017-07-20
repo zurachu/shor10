@@ -17,7 +17,7 @@ if(count($_GET) == 1)
 		else if($value == "")
 		{
 			// ハッシュとみなして登録済み情報を検索
-			$statement = foreach($pdo->query("SELECT url from url_conversion where hash = '$key'");
+			$statement = $pdo->query("SELECT url from url_conversion where hash = '$key'");
 			if($result = $statement->fetch())
 			{
 				header("Location: {$result['url']}");
