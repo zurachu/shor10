@@ -10,5 +10,6 @@ try {
 		var_dump($row['url']);
 	}
 } catch(PDOException $e) {
+	print($e->getMessage());
 	die($e->getMessage());
 }
