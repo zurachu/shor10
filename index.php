@@ -20,10 +20,11 @@ if(count($_GET) == 1)
 			{
 				// 新規登録処理
 				$statement = $pdo->prepare("INSERT IGNORE INTO url_conversion(hash, url) VALUES(:hash, :url)");
-				$stmt->bindParam(':hash', $id, PDO::PARAM_STR);
+				$hash = "";
+				$stmt->bindParam(':hash', $hash, PDO::PARAM_STR);
 				$statement->bindValue(':url', $value, PDO::PARAM_STR);
 				do {
-					$id = substr(base_convert(md5(uniqid()), 16, 36), 0, 8);
+					$hash = substr(base_convert(md5(uniqid()), 16, 36), 0, 8);
 					$statement->execute();
 				} while($statement->rowCount() < 1);
 			}
