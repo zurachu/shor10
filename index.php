@@ -23,11 +23,14 @@ if(count($_GET) == 1)
 				$statement->bindParam(':hash', $hash, PDO::PARAM_STR);
 				$statement->bindValue(':url', $value, PDO::PARAM_STR);
 				$hash = substr(base_convert(md5(uniqid()), 16, 36), 0, 8);
+				echo $hash;
 				$statement->execute();
+				print $statement->errorCode();
 			}
 			else
 			{
 				// 不正な URL
+				echo "invalid";
 			}
 			echo $value;
 		}
