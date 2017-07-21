@@ -22,10 +22,8 @@ if(count($_GET) == 1)
 				$statement = $pdo->prepare("INSERT IGNORE INTO url_conversion(hash, url) VALUES(:hash, :url)");
 				$statement->bindParam(':hash', $hash, PDO::PARAM_STR);
 				$statement->bindValue(':url', $value, PDO::PARAM_STR);
-				do {
-					$hash = substr(base_convert(md5(uniqid()), 16, 36), 0, 8);
-					$statement->execute();
-				} while($statement->rowCount() < 1);
+				$hash = substr(base_convert(md5(uniqid()), 16, 36), 0, 8);
+				$statement->execute();
 			}
 			else
 			{
